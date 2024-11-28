@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { PersonajesModule } from "../personajes/personajes.module";
+import { TransformacionesModule } from "../transformaciones/transformaciones.module";
 
 
 
@@ -11,8 +12,9 @@ import { PersonajesModule } from "../personajes/personajes.module";
   ],
   imports: [
     CommonModule,
-    PersonajesModule
-  ],
+    PersonajesModule,
+    TransformacionesModule
+],
   exports : [
     HomeComponent
   ]

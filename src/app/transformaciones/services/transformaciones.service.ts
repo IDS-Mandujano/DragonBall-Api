@@ -11,7 +11,7 @@ export class TransformacionesService {
 
   constructor(private http: HttpClient) {}
 
-  getTransformaciones(): Observable<Transformaciones[]> {
-    return this.http.get<Transformaciones[]>(this.apiUrl);
+  getTransformacionesByCharacter(characterId: number): Observable<Transformaciones[]> {
+    return this.http.get<Transformaciones[]>(`${this.apiUrl}?characterId=${characterId}`);
   }
 }

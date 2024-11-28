@@ -1,8 +1,16 @@
 export interface Transformaciones {
+  id: number;
+  name: string;
+  image: string;
+  ki: string;
+  character: {
     id: number;
     name: string;
-    image: string;
-    description: string;
     ki: string;
-    deletedAt: string | null;
-  }  
+    race: string;
+    gender: string;
+    description: string;
+    image: string;
+    affiliation: string;
+  };
+}
