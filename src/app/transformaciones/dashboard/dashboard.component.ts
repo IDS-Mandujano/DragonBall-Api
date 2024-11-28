@@ -3,7 +3,7 @@ import { TransformacionesService } from '../services/transformaciones.service';
 import { Transformaciones } from '../models/transformaciones';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'dashboard-transformation',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
