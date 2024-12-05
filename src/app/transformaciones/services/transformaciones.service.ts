@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Transformaciones } from '../models/transformaciones';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransformacionesService {
-  private apiUrl = 'https://dragonball-api.com/api/transformations';
+  private apiUrl = 'https://dragonball-api.com/api/characters';
 
   constructor(private http: HttpClient) {}
 
   getTransformacionesByCharacter(characterId: number): Observable<Transformaciones[]> {
-    return this.http.get<Transformaciones[]>(`${this.apiUrl}?characterId=${characterId}`);
+    return this.http.get<any>(`${this.apiUrl}/${characterId}`).pipe(
+      map(response => response.transformations)
+    );
   }
 }

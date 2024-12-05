@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 export class PersonajeCardComponent {
   @Input() personaje!: Personaje;
 
-  constructor (private route : Router) {}
+  constructor(private route: Router) {}
 
   handleTransformaciones(): void {
-    this.route.navigate(['/transformaciones'])
+    this.route.navigate(['/transformaciones'], { queryParams: { id: this.personaje.id } });
   }
 
   handleOrigen(): void {
