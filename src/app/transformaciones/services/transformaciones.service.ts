@@ -16,4 +16,8 @@ export class TransformacionesService {
       map(response => response.transformations)
     );
   }
+
+  updateTransformacion(transformacion: Transformaciones): Observable<Transformaciones> {
+    return this.http.put<Transformaciones>(`${this.apiUrl}/${transformacion.id}`, transformacion);
+  }
 }

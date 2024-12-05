@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Transformaciones } from '../models/transformaciones';
 
 @Component({
@@ -8,6 +8,7 @@ import { Transformaciones } from '../models/transformaciones';
 })
 export class CardComponent {
   @Input() transformacion!: Transformaciones;
+  @Output() transformacionUpdated = new EventEmitter<Transformaciones>();
   isModalOpen: boolean = false;
   editKi: string = '';
 
@@ -20,8 +21,10 @@ export class CardComponent {
     this.isModalOpen = false;
   }
 
-  onSubmit() {
-    console.log('Nuevo Ki:', this.editKi);
+  onSubmit(event: Event) {
+    event.preventDefault();
+    this.transformacion.ki = this.editKi;
+    this.transformacionUpdated.emit(this.transformacion);
     this.closeModal();
   }
 }

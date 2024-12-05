@@ -31,13 +31,23 @@ export class DashboardComponent implements OnInit {
       this.fetchTransformaciones();
     });
   }
-
+  
   fetchTransformaciones(): void {
-    this.transformacionesService.getTransformacionesByCharacter(this.characterId)
-      .subscribe((data) => {
-        this.transformaciones = data;
-      });
+    const storedTransformaciones = localStorage.getItem(`transformaciones-${this.characterId}`);
+    if (storedTransformaciones) {
+      this.transformaciones = JSON.parse(storedTransformaciones);
+    } else {
+      this.transformacionesService.getTransformacionesByCharacter(this.characterId)
+        .subscribe((data) => {
+          this.transformaciones = data;
+          this.saveTransformaciones();
+        });
+    }
   }
+  
+  saveTransformaciones(): void {
+    localStorage.setItem(`transformaciones-${this.characterId}`, JSON.stringify(this.transformaciones));
+  }  
 
   goBack(): void {
     const currentIndex = this.personajes.findIndex(p => p.id === this.characterId);
@@ -65,5 +75,13 @@ export class DashboardComponent implements OnInit {
 
   goHome(): void {
     this.router.navigate(['/']);
+  }
+
+  updateTransformacion(updatedTransformacion: Transformaciones): void {
+    const index = this.transformaciones.findIndex(t => t.id === updatedTransformacion.id);
+    if (index !== -1) {
+      this.transformaciones[index] = updatedTransformacion;
+      this.saveTransformaciones();
+    }
   }
 }

@@ -6,9 +6,10 @@
 
     <div *ngIf="transformaciones.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
       <app-card
-        *ngFor="let transformacion of transformaciones"
-        [transformacion]="transformacion"
-      ></app-card>
+      *ngFor="let transformacion of transformaciones"
+      [transformacion]="transformacion"
+      (transformacionUpdated)="updateTransformacion($event)"
+      ></app-card>    
     </div>
   </div>
 
