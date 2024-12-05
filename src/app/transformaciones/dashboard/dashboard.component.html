@@ -1,10 +1,29 @@
-<div *ngIf="transformaciones.length === 0" class="text-center p-4">
-  <p>No hay transformaciones disponibles para este personaje.</p>
-</div>
+<div class="flex flex-col justify-between h-full">
+  <div class="flex-grow">
+    <div *ngIf="transformaciones.length === 0" class="text-center p-4">
+      <p>No hay transformaciones disponibles para este personaje.</p>
+    </div>
 
-<div *ngIf="transformaciones.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-  <app-card
-    *ngFor="let transformacion of transformaciones"
-    [transformacion]="transformacion"
-  ></app-card>
+    <div *ngIf="transformaciones.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+      <app-card
+        *ngFor="let transformacion of transformaciones"
+        [transformacion]="transformacion"
+      ></app-card>
+    </div>
+  </div>
+
+  <div class="text-center p-4 flex justify-center gap-4 fixed bottom-4 w-full">
+    <button 
+      (click)="goBack()" 
+      [disabled]="characterId === personajes[0]?.id" 
+      class="bg-blue-500 text-white text-xl py-3 px-6 rounded-full hover:bg-blue-600 disabled:bg-gray-400">
+      ← Atrás
+    </button>
+    <button 
+      (click)="goForward()" 
+      [disabled]="characterId === personajes[personajes.length - 1]?.id" 
+      class="bg-blue-500 text-white text-xl py-3 px-6 rounded-full hover:bg-blue-600 disabled:bg-gray-400">
+      Adelante →
+    </button>
+  </div>
 </div>
