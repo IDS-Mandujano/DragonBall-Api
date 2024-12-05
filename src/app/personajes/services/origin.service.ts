@@ -15,7 +15,7 @@ export class OriginService {
   getOriginPlanetByCharacter(characterId: number): Observable<Planet> {
     return this.http.get<any>(`${this.apiUrl}/${characterId}`).pipe(
       map(response => {
-        return response.originPlanet;  // Devuelve el planeta de origen
+        return response.originPlanet;
       })
     );
   }

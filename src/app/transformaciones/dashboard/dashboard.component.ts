@@ -62,4 +62,8 @@ export class DashboardComponent implements OnInit {
       this.fetchTransformaciones();
     }
   }
+
+  goHome(): void {
+    this.router.navigate(['/']);
+  }
 }

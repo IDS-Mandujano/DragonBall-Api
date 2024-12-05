@@ -14,6 +14,12 @@
 
   <div class="text-center p-4 flex justify-center gap-4 fixed bottom-4 w-full">
     <button 
+      (click)="goHome()" 
+      class="bg-gray-500 text-white text-xl py-3 px-6 rounded-full hover:bg-gray-600">
+      Home
+    </button>
+
+    <button 
       (click)="goBack()" 
       [disabled]="characterId === personajes[0]?.id" 
       class="bg-blue-500 text-white text-xl py-3 px-6 rounded-full hover:bg-blue-600 disabled:bg-gray-400">
