@@ -13,15 +13,17 @@
       <p><strong>Ki:</strong> {{ personaje.ki }}</p>
       <p><strong>Afiliación:</strong> {{ personaje.affiliation }}</p>
     </div>
+
     <div class="h-32 overflow-y-auto text-gray-300 mt-4">
       <p>{{ personaje.description }}</p>
     </div>
+
     <div class="mt-6 flex justify-center gap-4">
       <button 
-        class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105" 
+        class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105 flex-1" 
         (click)="handleTransformaciones()">Transformaciones</button>
       <button 
-        class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-transform transform hover:scale-105" 
+        class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition-transform transform hover:scale-105 flex-1" 
         (click)="handleOrigen()">Origen</button>
     </div>
   </div>
