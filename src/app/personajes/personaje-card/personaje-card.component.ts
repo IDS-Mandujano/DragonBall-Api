@@ -1,7 +1,6 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Personaje } from '../Models/personaje.model';
 import { Router } from '@angular/router';
-import { ModalOriginComponent } from '../modal-origin/modal-origin.component';
 import { OriginService } from '../services/origin.service';
 import { Planet } from '../Models/planet';
 
@@ -12,21 +11,33 @@ import { Planet } from '../Models/planet';
 })
 export class PersonajeCardComponent {
   @Input() personaje!: Personaje;
-  @ViewChild(ModalOriginComponent) modalOrigen!: ModalOriginComponent;
-  
+
+  isModalOpen = false;
+  originPlanet: Planet | null = null;
+
   constructor(
     private route: Router,
-    private origin: OriginService
+    private originService: OriginService
   ) {}
 
   handleTransformaciones(): void {
     this.route.navigate(['/transformaciones'], { queryParams: { id: this.personaje.id } });
   }
 
-  handleOrigen(): void {
-    this.origin.getOriginPlanetByCharacter(this.personaje.id).subscribe(
+  openModal(): void {
+    this.isModalOpen = true;
+    this.loadOriginPlanet();
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+    this.originPlanet = null;
+  }
+
+  private loadOriginPlanet(): void {
+    this.originService.getOriginPlanetByCharacter(this.personaje.id).subscribe(
       (planet: Planet) => {
-        console.log(planet)
+        this.originPlanet = planet;
       },
       (error) => {
         console.error('Error al obtener el planeta de origen:', error);
