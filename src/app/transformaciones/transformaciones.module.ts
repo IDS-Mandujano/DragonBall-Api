@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardComponent } from './card/card.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -12,7 +11,6 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule
   ],
   exports : [DashboardComponent]

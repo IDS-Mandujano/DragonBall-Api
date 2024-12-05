@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Personaje } from '../Models/personaje.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personaje-card',
@@ -9,8 +10,10 @@ import { Personaje } from '../Models/personaje.model';
 export class PersonajeCardComponent {
   @Input() personaje!: Personaje;
 
+  constructor (private route : Router) {}
+
   handleTransformaciones(): void {
-    console.log('Transformaciones clicked for:', this.personaje.name);
+    this.route.navigate(['/transformaciones'])
   }
 
   handleOrigen(): void {
